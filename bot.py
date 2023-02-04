@@ -52,7 +52,7 @@ async def echo(message: types.Message):
 async def callback_worker(call):
     if call.data == 'zodiac':
         msg = random.choice(first) + ' \n' + random.choice(second) + ' ' + random.choice(second_add) + ' \n' + random.choice(third)
-        await bot.send_message(call.message.chat.id, msg)
+        await bot.send_message(call.message.chat.id, msg + ' /start')
 
 @dp.message_handler(content_types='text')
 async def send_hello(msg : types.Message):
