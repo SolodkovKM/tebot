@@ -6,22 +6,6 @@ second = ['Но помните, что даже в этом случае нуж�
 second_add = ['отношения с друзьями и близкими','работу и деловые вопросы','ценность своего времени','бережность к своим финансам']
 third = ['Злые языки могут говорить вам, что вы поступаете неправильно, но слушать их сегодня не нужно','Умные люди никогда не будут влезать в чужие конфликты без необходимости','Всегда можно отложить маленькие проблемы на потом, но забывать про них не стоит','Любая неожиданность принесет свои плоды, пусть и не всегда положительные']
 
-zod = [
-    [types.KeyboardButton(text='Овен'),
-    types.KeyboardButton(text='Телец'),
-    types.KeyboardButton(text='Близнецы'),
-    types.KeyboardButton(text='Рак'),
-    types.KeyboardButton(text='Лев'),
-    types.KeyboardButton(text='Дева'),
-    types.KeyboardButton(text='Весы'),
-    types.KeyboardButton(text='Скорпион'),
-    types.KeyboardButton(text='Стрелец'),
-    types.KeyboardButton(text='Козерог'),
-    types.KeyboardButton(text='Водолей'),
-    types.KeyboardButton(text='Рыбы')],
-    ]
-
-
 API_TOKEN = "5899157536:AAHj0NWIjYakz7EBF5rRpsOvMKgV5LLMp5Y"
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
@@ -37,7 +21,31 @@ async def send_help(message: types.Message):
 @dp.message_handler(commands=['goroskop'])
 async def echo(message: types.Message):
     await bot.send_message(message.from_user.id, text='Привет, сейчас расскажу тебе гороскоп')
-    keyboard = types.InlineKeyboardMarkup(keyboard=zod)
+    keyboard = types.InlineKeyboardMarkup()
+    key_oven = types.KeyboardButton(text='Овен', callback_data='zodiac')
+    keyboard.add(key_oven)
+    key_telec = types.KeyboardButton(text='Телец', callback_data='zodiac')
+    keyboard.add(key_telec)
+    key_bliznecy = types.KeyboardButton(text='Близнецы', callback_data='zodiac')
+    keyboard.add(key_bliznecy)
+    key_rak = types.KeyboardButton(text='Рак', callback_data='zodiac')
+    keyboard.add(key_rak)
+    key_lev = types.KeyboardButton(text='Лев', callback_data='zodiac')
+    keyboard.add(key_lev)
+    key_deva = types.KeyboardButton(text='Дева', callback_data='zodiac')
+    keyboard.add(key_deva)
+    key_vesy = types.KeyboardButton(text='Весы', callback_data='zodiac')
+    keyboard.add(key_vesy)
+    key_scorpion = types.KeyboardButton(text='Скорпион', callback_data='zodiac')
+    keyboard.add(key_scorpion)
+    key_strelec = types.KeyboardButton(text='Стрелец', callback_data='zodiac')
+    keyboard.add(key_strelec)
+    key_kozerog = types.KeyboardButton(text='Козерог', callback_data='zodiac')
+    keyboard.add(key_kozerog)
+    key_vodoley = types.KeyboardButton(text='Водолей', callback_data='zodiac')
+    keyboard.add(key_vodoley)
+    key_ryby = types.KeyboardButton(text='Рыбы', callback_data='zodiac')
+    keyboard.add(key_ryby)
     await bot.send_message(message.from_user.id, text="Выбери свой знак зодиака", reply_markup=keyboard)
 
 @dp.callback_query_handler(run_task=lambda call: True)
